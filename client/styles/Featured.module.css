@@ -1,0 +1,33 @@
+.container{
+    height: calc(100vh - 100px);
+    background-color: #d1411e;
+    overflow : hidden;
+
+}
+
+.arrowContainer{
+    position: absolute;
+    padding: 3rem;
+    height: 20%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.wrapper{
+    width: 300vw;
+    display: flex;
+    transition: all 1s ease;
+}
+.imgContainer{
+    background: #d1411e;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 10rem;
+
+
+}

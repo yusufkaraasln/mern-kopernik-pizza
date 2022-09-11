@@ -1,0 +1,145 @@
+.container{
+    height: calc(100vh - 100px);
+    display: flex;
+    
+
+}
+
+.imgContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.detailsContainer{
+    padding: 0 3rem;
+flex: 1;
+display: flex;
+justify-content: center;
+flex-direction: column;
+gap: 3rem;
+}
+
+.item:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.title{
+    font-size: 3rem;
+    color: rgb(51, 51, 51);
+    font-weight: bold;  
+    font-weight: 300;
+}
+.price{
+    font-size: 2rem;
+    color: #D1411E;
+    
+    font-weight: 400;
+   
+}
+
+.desc{
+    margin: 0;
+    font-size: 1.2rem;
+    color: rgba(51, 51, 51, 0.795);
+
+
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+
+.item:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.size{
+    font-size: 2.5rem;
+    color: rgb(51, 51, 51);
+    font-weight: 100;
+    line-height: 1.5;
+
+}
+.sizeContainer{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.item:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.extras{
+    font-size: 2rem;
+    color: rgb(51, 51, 51);
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+.extrasContainer{
+    display: flex;
+    gap: 3rem;
+    cursor: pointer;
+}
+.extraItem{
+        
+    font-size: 1.2rem;
+    color: rgb(51, 51, 51);
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+
+}
+
+.input{
+    margin: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right:  .5rem;
+
+
+}
+
+
+.submit{
+    
+display: flex;
+align-items: center;
+
+}
+.button{
+
+    background-color: #D1411E;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 1rem;
+
+}
+.number{
+    border: 1px solid #D1411E;
+    width:5rem;
+    color: #D1411E;
+    outline: none;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 2rem;
+}

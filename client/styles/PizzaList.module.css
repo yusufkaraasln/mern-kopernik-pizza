@@ -1,0 +1,32 @@
+ .container{
+
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+ }
+
+    .title{
+        font-size: 5rem;
+        color: #d1411e;
+        font-weight: 300;
+        margin-bottom: 5px;
+    }
+
+ .desc{
+    font-size: 24px;
+    color: #24252680;
+    width: 70%;
+    text-align: center;
+ }
+
+ .wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 3rem;
+margin: 5rem 0;
+ }
