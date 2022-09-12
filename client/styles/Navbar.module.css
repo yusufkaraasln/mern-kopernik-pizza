@@ -56,6 +56,7 @@ color: #fff;
     padding: 10px;
     font-weight: 500;
     border-radius: 1rem;
+    cursor: pointer;
 }
 
 
@@ -87,6 +88,7 @@ color: #fff;
 
     .cart{
         position: relative;
+        cursor: pointer;
     }
     .counter{
              

@@ -1,18 +1,19 @@
 import React from "react";
 import styles from "../../styles/Order.module.css";
 import Head from "next/head";
-function Order() {
 
-    let status = 0
+import axios from "axios";
 
-    const statusClass = (index) => {
+function Order({ order }) {
+  let status = order.status;
 
-            if (index-status < 1) return styles.done
-            if (index-status === 1) return styles.progress
-            if (index-status > 1) return styles.undone
-             
+  const statusClass = (index) => {
+    if (index - status < 1) return styles.done;
+    if (index - status === 1) return styles.progress;
+    if (index - status > 1) return styles.undone;
+  };
 
-    }
+  const KDV = (order.total * 18) / 100;
 
   return (
     <div className={styles.container}>
@@ -34,30 +35,32 @@ function Order() {
       <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>
-            <tr className={styles.tr}>
-              <th style={{ textAlign: "justify" }}>Sipariş ID</th>
-              <th style={{ textAlign: "justify" }}>Müşteri</th>
-              <th style={{ textAlign: "justify" }}>Adres</th>
-              <th style={{ textAlign: "justify" }}>Toplam</th>
-            </tr>
-            <tr>
-              <td>
-                <span className={styles.id}>9634534852356</span>
-              </td>
-              <td>
-                <span className={styles.name}>Recep İvedik</span>
-              </td>
+            <tbody>
+              <tr className={styles.tr}>
+                <th style={{ textAlign: "justify" }}>Sipariş ID</th>
+                <th style={{ textAlign: "justify" }}>Müşteri</th>
+                <th style={{ textAlign: "justify" }}>Adres</th>
+                <th style={{ textAlign: "justify" }}>Toplam</th>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>
+                  <span className={styles.id}>{order.id}</span>
+                </td>
+                <td>
+                  <span className={styles.name}>{order.customer}</span>
+                </td>
 
-              <td>
-                <span className={styles.address}>
-                  Güngören 31. sk no: 69, İstanbul
-                </span>
-              </td>
+                <td>
+                  <span className={styles.address}>{order.address}</span>
+                </td>
 
-              <td>
-                <span className={styles.total}>69.00₺</span>
-              </td>
-            </tr>
+                <td>
+                  <span className={styles.total}>{order.total} ₺</span>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div className={styles.row}>
@@ -66,7 +69,7 @@ function Order() {
               style={{
                 fontSize: "32px",
               }}
-              class="fa-regular fa-credit-card"
+              className="fa-regular fa-credit-card"
             ></i>
             <span className={styles.statusText}>Ödeme</span>
             <div className={styles.checkIcon}>
@@ -79,7 +82,7 @@ function Order() {
                   fontSize: "16px",
                   marginRight: "10px",
                 }}
-                class="fa-solid fa-check"
+                className="fa-solid fa-check"
               ></i>
             </div>
           </div>
@@ -88,7 +91,7 @@ function Order() {
               style={{
                 fontSize: "32px",
               }}
-              class="fa-solid fa-cubes-stacked"
+              className="fa-solid fa-cubes-stacked"
             ></i>
             <span className={styles.statusText}>Hazırlanıyor</span>
             <div className={styles.checkIcon}>
@@ -101,7 +104,7 @@ function Order() {
                   fontSize: "16px",
                   marginRight: "10px",
                 }}
-                class="fa-solid fa-check"
+                className="fa-solid fa-check"
               ></i>
             </div>
           </div>
@@ -110,7 +113,7 @@ function Order() {
               style={{
                 fontSize: "32px",
               }}
-              class="fa-solid fa-motorcycle"
+              className="fa-solid fa-motorcycle"
             ></i>
             <span className={styles.statusText}>Yolda</span>
             <div className={styles.checkIcon}>
@@ -123,7 +126,7 @@ function Order() {
                   fontSize: "16px",
                   marginRight: "10px",
                 }}
-                class="fa-solid fa-check"
+                className="fa-solid fa-check"
               ></i>
             </div>
           </div>
@@ -132,7 +135,7 @@ function Order() {
               style={{
                 fontSize: "32px",
               }}
-              class="fa-solid fa-bag-shopping"
+              className="fa-solid fa-bag-shopping"
             ></i>
             <span className={styles.statusText}>Teslim Edildi</span>
             <div className={styles.checkIcon}>
@@ -145,7 +148,7 @@ function Order() {
                   fontSize: "16px",
                   marginRight: "10px",
                 }}
-                class="fa-solid fa-check"
+                className="fa-solid fa-check"
               ></i>
             </div>
           </div>
@@ -155,13 +158,16 @@ function Order() {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>Toplam Sepet</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Ürün Tutarı:</b>69.00₺
+            <b className={styles.totalTextTitle}>Ürün Tutarı:</b>
+            {order.total}₺
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>KDV:</b>0.00₺
+            <b className={styles.totalTextTitle}>KDV:</b>
+            {KDV}₺
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Toplam Tutar:</b>69.00₺
+            <b className={styles.totalTextTitle}>Toplam Tutar:</b>
+            {KDV + order.total}₺
           </div>
           <button disabled className={styles.button}>
             Ödenmiş
@@ -171,5 +177,14 @@ function Order() {
     </div>
   );
 }
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get("http://localhost:3000/api/orders/" + params.id);
+  return {
+    props: {
+      order: res.data,
+    },
+  };
+};
 
 export default Order;

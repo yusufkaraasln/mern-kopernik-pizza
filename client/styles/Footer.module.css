@@ -1,7 +1,7 @@
 .container{
     background: #242526;
     display: flex;
-
+    width: 100%;
 }
 .item{
     flex: 1;
