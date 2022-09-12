@@ -59,7 +59,7 @@ function Product({ pizza }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.imgContainer}>
-        <Image src="/pizza.png" width={700} height={700} />
+        <Image src={pizza.img} width={700} height={700} />
       </div>
 
       <div className={styles.detailsContainer}>
